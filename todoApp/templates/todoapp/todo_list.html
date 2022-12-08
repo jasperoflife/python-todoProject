@@ -1,0 +1,17 @@
+{% extends 'todo_list2.html' %}
+{% block content %}
+    <center>
+        <h1>todo list</h1>
+        {% if request.user.is_authenticated %}
+            Hello {{request.user.username}}
+        {% else %}
+            Hello anonymous user
+        {% endif %}
+        <a href="/create">Create a todo</a>
+        <ul>
+            {% for todo in todo_list %}
+                <li class=" container list-group-item list-group-item-primary"><a href="/{{todo.id}}">{{ todo.name }}</a>, it's due {{ todo.due_date }}</li>
+            {% endfor %}
+        </ul>
+    </center>
+{% endblock %}

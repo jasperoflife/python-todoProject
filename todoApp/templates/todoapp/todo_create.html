@@ -1,0 +1,13 @@
+{% extends 'todo_list2.html' %}
+{% block content %}
+    <center>
+        <h2>Create a todo</h2>
+        <form action="" method="post">
+            {% csrf_token %}
+            <!-- <input type="text" placeholder="taskname">
+            <input type="text" placeholder="due date"> -->
+            {{ form.as_p }}
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
+    </center>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'todo_list2.html' %}
+{% block content %}
+    <center>
+        <h2>Update a todo</h2>
+        <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+    </center>
+{% endblock %}

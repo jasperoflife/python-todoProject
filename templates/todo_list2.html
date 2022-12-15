@@ -19,12 +19,23 @@
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="/">Home</a>
               </li>
+              {% if user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+              </li>
               <li class="nav-item">
                 <a class="nav-link" href="/create">Create a todo</a>
               </li>
+              
+              {% else %}
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'login' %}">Login</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'register_user' %}">Sign Up</a>
+              </li>
+              {% endif %}
+
               <li class="nav-item">
                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"></a>
               </li>
@@ -32,10 +43,19 @@
           </div>
         </div>
       </nav>
-
-{% block content %}
-    <h1>Second list</h1>
-{% endblock %}
+    <div>
+      {% if messages %}
+        {% for i in messages %}
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {{i}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endfor %}
+      {% endif %}
+      {% block content %}
+        <h1>Second list</h1>
+      {% endblock %}
+    </div>
     <!-- Footer -->
     <footer class="text-center text-lg-start bg-white text-muted">
     <!-- Section: Social media -->
